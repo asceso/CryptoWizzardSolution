@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using CryptoWizzard.ViewModels;
+using Services.HashingService;
+using Services.MemoryService;
+using System.Windows;
 
 namespace CryptoWizzard.Views
 {
@@ -7,11 +10,12 @@ namespace CryptoWizzard.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(IMemoryService memory, IHashingService hashing)
         {
+            InitializeComponent();
             Width = SystemParameters.FullPrimaryScreenWidth - 10;
             Height = SystemParameters.FullPrimaryScreenHeight + 10;
-            InitializeComponent();
+            DataContext = new MainWindowViewModel(memory, hashing);
         }
     }
 }

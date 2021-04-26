@@ -3,5 +3,16 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:local="clr-namespace:CryptoWizzard"
                         xmlns:prism="http://prismlibrary.com/">
-    <Application.Resources />
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Styles;component/Images/SVGCollection.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Styles;component/Brushes/SolidBrushes.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Styles;component/FrameworkElements/Buttons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Styles;component/FrameworkElements/DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Styles;component/FrameworkElements/ScrollBars.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Styles;component/FrameworkElements/TextBlock.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </prism:PrismApplication>

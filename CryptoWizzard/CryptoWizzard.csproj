@@ -4,11 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>CryptoWizzard</AssemblyName>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+	<Langversion>preview</Langversion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Prism.Unity" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Services\Services.csproj" />
     <ProjectReference Include="..\Styles\Styles.csproj" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,632 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTemplate x:Key="Logo" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="1010"
+                    Height="1010">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Path Fill="#FFFC6220">
+                        <Path.Data>
+                            <PathGeometry Figures="M505 0c278.895 0 505 226.106 505 505.003C1010 783.913 783.895 1010 505 1010   S0 783.913 0 505.003C0 226.106 226.105 0 505 0z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Canvas>
+                        <Path Fill="#FFFFFFFF">
+                            <Path.Data>
+                                <PathGeometry Figures="M504.987 449.681v52.521H331.062c-3.552-16.383-6.076-33.879-7.35-52.521    c-0.538-8.544-0.906-63.104-0.906-72.118c91.102-26.083 137.573-86.64 182.181-86.64V449.681z M504.987 717.142    c0 0 138.554-51.89 173.952-214.94H504.987V717.142z M723.915 355.919v21.643c0 6.546-0.293 64.138-1.005 74.47    c-1.273 19.708-3.968 39.195-8.058 57.922c-39.195 180.547-190.535 239.198-196.954 241.581l-10.092 3.809    c-0.907 0.33-1.837 0.502-2.818 0.502c-0.954 0-1.91-0.172-2.817-0.502l-10.068-3.809    c-6.443-2.383-157.784-61.059-196.953-241.581c-4.042-18.727-6.785-38.214-8.035-57.922c-0.711-10.362-1.03-67.924-1.03-74.47    v-21.643c0-3.571 2.377-6.694 5.831-7.698l20.798-5.989c41.742-11.943 73.465-32.337 101.416-50.384    c31.381-20.228 58.499-37.695 90.858-37.695c32.434 0 59.503 17.466 90.883 37.627c27.976 18.115 59.65 38.509 101.466 50.451    l20.773 5.989C721.539 349.226 723.915 352.349 723.915 355.919z M707.918 361.964l-15.041-4.311    c-44.045-12.598-76.822-33.707-105.703-52.338c-29.25-18.837-54.481-35.091-82.187-35.091c-27.656 0-52.937 16.254-82.137 35.048    c-28.93 18.673-61.658 39.783-105.703 52.38l-15.017 4.311v15.599c0 7.839 0.392 64.108 0.979 73.416    c1.2 18.911 3.822 37.614 7.766 55.614c37.308 172.04 180.761 227.642 186.86 229.938l7.251 2.681l7.252-2.681    c6.099-2.297 149.626-57.898 186.909-229.938c3.945-17.999 6.516-36.703 7.766-55.614c0.612-9.309 1.003-65.578 1.003-73.416    V361.964z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Minimize" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="24" Height="24">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Rectangle Width="24"
+                               Height="24"
+                               Fill="Transparent" />
+                    <Rectangle Canvas.Left="8"
+                               Canvas.Top="15"
+                               Width="16"
+                               Height="4"
+                               Fill="{TemplateBinding Foreground}"
+                               StrokeThickness="0.3" />
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Keys" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="48" Height="48">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Rectangle Width="48"
+                           Height="48"
+                           Fill="Transparent" />
+                <Path Fill="{TemplateBinding Foreground}">
+                    <Path.Data>
+                        <PathGeometry Figures="M38.93 26.51l-1.752.99-1.248-.743v-1.54l-2.978-1.787-1.417.709-.605-.361v-1.561l-2.978-1.787-1.437.719-2.684-1.6a5.97 5.97 0 0 1-3.437 1.428 5.956 5.956 0 0 1-.464.023 5.916 5.916 0 0 1-2.5-.562v-3.661c.307.138.642.223 1 .223a2.5 2.5 0 1 0-2.5-2.5v4.96a5.981 5.981 0 0 1-2-4.46c0-3.308 2.69-6 6-6 2.949 0 5.402 2.14 5.9 4.948.062.342.1.692.1 1.052 0 .78-.154 1.526-.427 2.21l13.427 7.645v1.656zM19.93 39h-7.5v-7.431l3.975-3.138 3.525 2.938v7.63zm8.965-23.302c.017-.231.035-.462.035-.698 0-4.962-4.038-9-9-9s-9 4.038-9 9c0 3.525 2.042 6.574 5 8.05v1.934L6 32.823l1.86 2.355 1.57-1.24V42h13.5v-8.131l1.54 1.284 1.92-2.305-3.46-2.884V26h-3v1.465l-2.5-2.084v-1.75a8.86 8.86 0 0 0 2.5.369 8.93 8.93 0 0 0 3.937-.92l2.253 1.344 2.31-.924v2.302l2.709 1.615 2.29-.917v2.283l3.5 2.087 5-2.38v-5.344l-13.034-7.448z" FillRule="EvenOdd" />
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Lock" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="485"
+                    Height="485">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Rectangle Width="485"
+                               Height="485"
+                               Fill="Transparent" />
+                    <Path Fill="{TemplateBinding Foreground}">
+                        <Path.Data>
+                            <PathGeometry Figures="M363.908 212.282v-90.978C363.908 54.434 309.509 0 242.606 0c-66.884 0-121.302 54.434-121.302 121.304v90.978   c-33.498 0-60.653 27.158-60.653 60.648v151.629c0 33.5 27.155 60.653 60.653 60.653h242.604c33.491 0 60.653-27.153 60.653-60.653   V272.93C424.562 239.439 397.399 212.282 363.908 212.282z M257.77 359.257v50.139c0 8.382-6.781 15.163-15.163 15.163   c-8.382 0-15.164-6.781-15.164-15.163v-50.139c-8.9-5.269-15.161-14.57-15.161-25.673c0-16.765 13.579-30.327 30.324-30.327   c16.745 0 30.326 13.562 30.326 30.327C272.933 344.687 266.665 353.989 257.77 359.257z M303.255 212.282h-121.3v-90.978   c0-33.465 27.2-60.653 60.651-60.653c33.435 0 60.648 27.188 60.648 60.653V212.282z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Unlock" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="485"
+                    Height="485">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Rectangle Width="485"
+                               Height="485"
+                               Fill="Transparent" />
+                    <Path Fill="{TemplateBinding Foreground}">
+                        <Path.Data>
+                            <PathGeometry Figures="M424.562 212.282h-60.653H242.607v-90.978C242.607 54.434 188.206 0 121.305 0C54.419 0 0.001 54.434 0.001 121.304v90.978   h60.651v-90.978c0-33.465 27.205-60.653 60.653-60.653c33.435 0 60.651 27.188 60.651 60.653v90.978   c-33.493 0-60.651 27.158-60.651 60.648v151.629c0 33.5 27.158 60.653 60.651 60.653h242.606c33.491 0 60.649-27.153 60.649-60.653   V272.93C485.212 239.439 458.054 212.282 424.562 212.282z M318.424 359.257v50.139c0 8.382-6.786 15.163-15.168 15.163   c-8.377 0-15.158-6.781-15.158-15.163v-50.139c-8.887-5.269-15.164-14.57-15.164-25.673c0-16.765 13.562-30.327 30.322-30.327   c16.765 0 30.331 13.562 30.331 30.327C333.587 344.687 327.306 353.989 318.424 359.257z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Close" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="24" Height="24">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas />
+                <Rectangle Width="24"
+                           Height="24"
+                           Fill="Transparent" />
+                <Path Fill="{TemplateBinding Foreground}">
+                    <Path.Data>
+                        <PathGeometry Figures="m 14.8 12 3.6 -3.6 c 0.8 -0.8 0.8 -2 0 -2.8 -0.8 -0.8 -2 -0.8 -2.8 0 L 12 9.2 8.4 5.6                                                       c -0.8 -0.8 -2 -0.8 -2.8 0 -0.8 0.8 -0.8 2 0 2.8 L 9.2 12 5.6 15.6 c -0.8 0.8 -0.8 2 0 2.8                                                       C 6 18.8 6.5 19 7 19 7.5 19 8 18.8 8.4 18.4 l 3.6 -3.6 3.6 3.6                                                        c 0.4 0.4 0.9 0.6 1.4 0.6 0.5 0 1 -0.2 1.4 -0.6 0.8 -0.8 0.8 -2 0 -2.8 z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Sort" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="500" Height="500">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Path Fill="{TemplateBinding Foreground}">
+                        <Path.Data>
+                            <PathGeometry Figures="m 251.23335 33.168915 125.90352 218.071315 125.90352 218.07132 -251.80705 -1e-5 -251.80706781 -10e-6 L 125.32981 251.24023 Z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Back" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="1276"
+                    Height="1276"
+                    RenderTransformOrigin="0.5, 0.5">
+                <Canvas.RenderTransform>
+                    <RotateTransform Angle="90" CenterX="0" CenterY="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Canvas.RenderTransform>
+                        <TranslateTransform X="0" Y="0" />
+                    </Canvas.RenderTransform>
+                    <Rectangle Width="1276"
+                               Height="1276"
+                               Fill="Transparent" />
+                    <Path Fill="{TemplateBinding Foreground}">
+                        <Path.RenderTransform>
+                            <TranslateTransform X="0" Y="250" />
+                        </Path.RenderTransform>
+                        <Path.Data>
+                            <PathGeometry Figures="m 148.55 0 h 0.69 c 1.55 2.62 4 4.5 6.07 6.68 160.5 160.51 321.02 321.01 481.51 481.52 0.78 0.86 1.56 0.86 2.36 0.01 162 -162.04 324.04 -324.05 486.05 -486.07 0.29 -0.54 0.85 -1.61 1.13 -2.14 h 0.91 c 4.63 5.57 10.16 10.33 15.16 15.57 44.52 44.52 89.04 89.05 133.57 133.56 v 0.65 C 1224.95 200.47 1174.24 251.5 1123.31 302.31 985.15 440.48 846.98 578.65 708.81 716.81 685.19 740.35 661.73 764.07 638 787.5 539.27 689.07 440.81 590.35 342.19 491.82 266.35 415.98 190.52 340.15 114.69 264.32 76.43 226.16 38.38 187.8 0 149.79 v -0.65 C 48.87 100.3 97.69 51.41 146.58 2.59 147.33 1.8 147.99 0.94 148.55 0 Z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Accept" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="128" Height="128">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Rectangle Width="128"
+                           Height="128"
+                           Fill="Transparent" />
+                <Path Fill="{TemplateBinding Foreground}">
+                    <Path.Data>
+                        <PathGeometry Figures="M64 0a64 64 0 1 0 64 64A64.07 64.07 0 0 0 64 0Zm0 122a58 58 0 1 1 58-58A58.07 58.07 0 0 1 64 122Z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Path Fill="{TemplateBinding Foreground}">
+                    <Path.Data>
+                        <PathGeometry Figures="M87.9 42.36 50.42 79.22 40.17 68.43a3 3 0 0 0-4.35 4.13l12.35 13a3 3 0 0 0 2.12.93h.05a3 3 0 0 0 2.1-.86l39.65-39a3 3 0 1 0-4.21-4.28Z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Save" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="500" Height="500">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Rectangle Width="500"
+                           Height="500"
+                           Fill="Transparent" />
+                <Path Fill="{TemplateBinding Foreground}">
+                    <Path.Data>
+                        <PathGeometry Figures="M 0 50 C 0 22.5 22.5 0 50 0 h 350 l 100 100 v 350 a 50 50 0 0 1 -50 50 H 50 A 50 50 0 0 1 0 450 Z m 125 0 V 200 H 375 V 50 Z m 150 25 h 75 v 100 h -75 z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Load" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="512" Height="512">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Rectangle Width="512"
+                               Height="512"
+                               Fill="Transparent" />
+                    <Path Fill="{TemplateBinding Foreground}">
+                        <Path.Data>
+                            <PathGeometry Figures="M255.13 385.54a15 15 0 0 1-11.14-5L103.67 224.93a15 15 0 0 1 11.14-25H171V63a15 15 0 0 1 15-15H324.3a15 15 0 0 1 15 15V199.89h56.16a15 15 0 0 1 11.14 25L266.27 380.58A15 15 0 0 1 255.13 385.54ZM148.53 229.89l106.6 118.25L361.74 229.89H324.3a15 15 0 0 1-15-15V78H201V214.89a15 15 0 0 1-15 15Z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Path Fill="{TemplateBinding Foreground}">
+                        <Path.Data>
+                            <PathGeometry Figures="M390.84 450H119.43a65.37 65.37 0 0 1-65.3-65.29V346.54a15 15 0 0 1 30 0v38.17A35.34 35.34 0 0 0 119.43 420H390.84a35.33 35.33 0 0 0 35.29-35.29V346.54a15 15 0 0 1 30 0v38.17A65.37 65.37 0 0 1 390.84 450Z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Refresh" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="438"
+                    Height="438">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Rectangle Width="438"
+                           Height="438"
+                           Fill="Transparent" />
+                <Canvas>
+                    <Canvas>
+                        <Path Fill="{TemplateBinding Foreground}">
+                            <Path.Data>
+                                <PathGeometry Figures="M433.109 23.694c-3.614-3.612-7.898-5.424-12.848-5.424c-4.948 0-9.226 1.812-12.847 5.424l-37.113 36.835    c-20.365-19.226-43.684-34.123-69.948-44.684C274.091 5.283 247.056 0.003 219.266 0.003c-52.344 0-98.022 15.843-137.042 47.536    C43.203 79.228 17.509 120.574 5.137 171.587v1.997c0 2.474 0.903 4.617 2.712 6.423c1.809 1.809 3.949 2.712 6.423 2.712h56.814    c4.189 0 7.042-2.19 8.566-6.565c7.993-19.032 13.035-30.166 15.131-33.403c13.322-21.698 31.023-38.734 53.103-51.106    c22.082-12.371 45.873-18.559 71.376-18.559c38.261 0 71.473 13.039 99.645 39.115l-39.406 39.397    c-3.607 3.617-5.421 7.902-5.421 12.851c0 4.948 1.813 9.231 5.421 12.847c3.621 3.617 7.905 5.424 12.854 5.424h127.906    c4.949 0 9.233-1.807 12.848-5.424c3.613-3.616 5.42-7.898 5.42-12.847V36.542C438.529 31.593 436.733 27.312 433.109 23.694z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                        <Path Fill="{TemplateBinding Foreground}">
+                            <Path.Data>
+                                <PathGeometry Figures="M422.253 255.813h-54.816c-4.188 0-7.043 2.187-8.562 6.566c-7.99 19.034-13.038 30.163-15.129 33.4    c-13.326 21.693-31.028 38.735-53.102 51.106c-22.083 12.375-45.874 18.556-71.378 18.556c-18.461 0-36.259-3.423-53.387-10.273    c-17.13-6.858-32.454-16.567-45.966-29.13l39.115-39.112c3.615-3.613 5.424-7.901 5.424-12.847c0-4.948-1.809-9.236-5.424-12.847    c-3.617-3.62-7.898-5.431-12.847-5.431H18.274c-4.952 0-9.235 1.811-12.851 5.431C1.807 264.844 0 269.132 0 274.08v127.907    c0 4.945 1.807 9.232 5.424 12.847c3.619 3.61 7.902 5.428 12.851 5.428c4.948 0 9.229-1.817 12.847-5.428l36.829-36.833    c20.367 19.41 43.542 34.355 69.523 44.823c25.981 10.472 52.866 15.701 80.653 15.701c52.155 0 97.643-15.845 136.471-47.534    c38.828-31.688 64.333-73.042 76.52-124.05c0.191-0.38 0.281-1.047 0.281-1.995c0-2.478-0.907-4.612-2.715-6.427    C426.874 256.72 424.731 255.813 422.253 255.813z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Up" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="284"
+                    Height="284">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Rectangle Width="284"
+                           Height="284"
+                           Fill="Transparent" />
+                <Canvas>
+                    <Path Fill="{TemplateBinding Foreground}">
+                        <Path.Data>
+                            <PathGeometry Figures="M282.082 195.285L149.028 62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665 0.953-6.567 2.856L2.856 195.285   C0.95 197.191 0 199.378 0 201.853c0 2.474 0.953 4.664 2.856 6.566l14.272 14.271c1.903 1.903 4.093 2.854 6.567 2.854   c2.474 0 4.664-0.951 6.567-2.854l112.204-112.202l112.208 112.209c1.902 1.903 4.093 2.848 6.563 2.848   c2.478 0 4.668-0.951 6.57-2.848l14.274-14.277c1.902-1.902 2.847-4.093 2.847-6.566   C284.929 199.378 283.984 197.188 282.082 195.285z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Drive" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="64" Height="64">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Canvas.RenderTransform>
+                        <TranslateTransform X="0" Y="-988.36218" />
+                    </Canvas.RenderTransform>
+                    <Path Fill="#FF800080"
+                          Opacity="1"
+                          StrokeEndLineCap="Flat"
+                          StrokeLineJoin="Miter"
+                          StrokeMiterLimit="4"
+                          StrokeStartLineCap="Flat"
+                          StrokeThickness="2">
+                        <Path.Data>
+                            <PathGeometry Figures="m 60 1019.8622 a 27.5 27.5 0 0 1 -27.5 27.5 27.5 27.5 0 0 1 -27.5 -27.5 27.5 27.5 0 0 1 27.5 -27.50002 27.5 27.5 0 0 1 27.5 27.50002 z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Path Fill="#FF530A53"
+                          Opacity="1"
+                          StrokeEndLineCap="Flat"
+                          StrokeLineJoin="Miter"
+                          StrokeMiterLimit="4"
+                          StrokeStartLineCap="Flat"
+                          StrokeThickness="2">
+                        <Path.Data>
+                            <PathGeometry Figures="M 40.394531 13.796875 L 40.394531 38.314453 L 38.472656 38.314453 L 38.472656 48.796875 L 26.525391 48.796875 L 36.419922 58.691406 A 27.5 27.5 0 0 0 59.910156 33.3125 L 40.394531 13.796875 z " FillRule="NonZero" />
+                        </Path.Data>
+                        <Path.RenderTransform>
+                            <TranslateTransform X="0" Y="988.36218" />
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path Fill="#FFFFFFFF"
+                          Opacity="1"
+                          StrokeEndLineCap="Round"
+                          StrokeLineJoin="Miter"
+                          StrokeMiterLimit="4"
+                          StrokeStartLineCap="Round"
+                          StrokeThickness="2">
+                        <Path.Data>
+                            <PathGeometry Figures="m 24.604492 1002.1591 0 0.625 0 23.8925 1.921874 0 0 10.4825 11.947266 0 0 -10.4825 1.921875 0 0 -24.5175 -15.791015 0 z m 1.25 1.25 13.291015 0 0 22.0175 -13.291015 0 0 -22.0175 z m 1.945312 23.3632 9.400391 0 0 9.1133 -9.400391 0 0 -9.1133 z m 1.97461 2.6348 0 3.8438 1.273437 0 0 -3.8438 -1.273437 0 z m 4.177734 0 0 3.8438 1.273437 0 0 -3.8438 -1.273437 0 z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Exe" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="48" Height="48">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Path Fill="#FFEEEEEE" StrokeThickness="1.11110806">
+                    <Path.Data>
+                        <PathGeometry Figures="M 6.2854383 4 C 5.1426637 4 3.999778 5.1428857 3.999778 6.2856603 l 0 35.4921237 C 3.999778 42.857148 5.1426637 44 6.221994 44 l 35.555457 0 c 1.079364 0 2.222216 -1.142886 2.222216 -2.222216 l 0 -35.5554568 c 0 -1.0793304 -1.14333 -2.2222161 -2.222216 -2.2222161 z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Path Fill="#FFAAAAAA" StrokeThickness="1.11110806">
+                    <Path.Data>
+                        <PathGeometry Figures="M 6.7775481 4 C 6.0367723 4 5.3717742 4.3641101 4.8677756 4.8679976 4.3638881 5.3719962 3.999778 6.0369943 3.999778 6.7777701 l 0 34.5132379 c 0 0.721109 0.3403324 1.382218 0.833331 1.87555 0.4929986 0.493332 1.154219 0.833331 1.8749948 0.833331 l 34.5832372 0 c 0.721109 0 1.382218 -0.339999 1.87555 -0.833331 0.493332 -0.493332 0.833331 -1.154441 0.833331 -1.87555 l 0 -34.5821266 C 44.000222 5.98755 43.660223 5.3263296 43.166891 4.833331 42.673559 4.3403324 42.01245 4 41.291341 4 L 6.7781036 4 Z m 0 1.111108 34.5132379 0 c 0.32861 0 0.751442 0.1958884 1.076385 0.5208319 0.325555 0.324888 0.52111 0.7476646 0.52111 1.0763304 l 0 34.5832377 c 0 0.32861 -0.195888 0.751442 -0.520832 1.076385 -0.324443 0.325555 -0.747775 0.52111 -1.076663 0.52111 l -34.5821266 0 c -0.3292213 0 -0.7519979 -0.195555 -1.0768859 -0.52111 C 5.3067744 42.04345 5.110886 41.620118 5.110886 41.29123 l 0 -34.5132377 C 5.110886 6.40766 5.3023299 5.9615501 5.6317735 5.6322177 5.9611059 5.3027742 6.4072158 5.1113302 6.7775481 5.1113302 Z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Canvas>
+                    <Canvas.RenderTransform>
+                        <MatrixTransform Matrix="0.74074239 -0.74074239 0.74074239 0.74074239 -10.074294 25.481051" />
+                    </Canvas.RenderTransform>
+                    <Path Fill="#FF888888">
+                        <Path.Data>
+                            <PathGeometry Figures="m 15 13 8 0 0 8 -8 0 z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Path Fill="#FF888888">
+                        <Path.Data>
+                            <PathGeometry Figures="m 25 13 8 0 0 8 -8 0 z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Path Fill="#FF888888">
+                        <Path.Data>
+                            <PathGeometry Figures="m 25 23 8 0 0 8 -8 0 z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Path Fill="#FF888888">
+                        <Path.Data>
+                            <PathGeometry Figures="m 15 23 8 0 0 8 -8 0 z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="File" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="792"
+                    Height="792">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Canvas>
+                        <Rectangle Canvas.Left="216"
+                                   Canvas.Top="432"
+                                   Width="360"
+                                   Height="36"
+                                   Fill="#000000" />
+                        <Rectangle Canvas.Left="216"
+                                   Canvas.Top="540"
+                                   Width="360"
+                                   Height="36"
+                                   Fill="#000000" />
+                        <Rectangle Canvas.Left="216"
+                                   Canvas.Top="108"
+                                   Width="216"
+                                   Height="36"
+                                   Fill="#000000" />
+                        <Rectangle Canvas.Left="216"
+                                   Canvas.Top="648"
+                                   Width="360"
+                                   Height="36"
+                                   Fill="#000000" />
+                        <Rectangle Canvas.Left="216"
+                                   Canvas.Top="324"
+                                   Width="360"
+                                   Height="36"
+                                   Fill="#000000" />
+                        <Path Fill="#000000">
+                            <Path.Data>
+                                <PathGeometry Figures="M666.54 792c0 0 17.46 0 17.46-17.604V158.4L526.896 0H125.46c0 0-17.46 0-17.46 17.604V774.36    C108 792 125.46 792 125.46 792H666.54z M144 36h360v108c0 36 36 36 36 36h108v576H144V36z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                        <Rectangle Canvas.Left="216"
+                                   Canvas.Top="216"
+                                   Width="360"
+                                   Height="36"
+                                   Fill="#000000" />
+                    </Canvas>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Folder" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="32" Height="32">
+                <Rectangle Canvas.Left="3"
+                           Canvas.Top="12"
+                           Width="25"
+                           Height="16"
+                           Fill="#000000"
+                           Opacity="0.2"
+                           RadiusX="1.25"
+                           RadiusY="1.25" />
+                <Path Fill="#FFBF4B4B">
+                    <Path.Data>
+                        <PathGeometry Figures="M 3 21.75 C 3 22.442 3.5575 23 4.25 23 H 26.75 C 27.442 23 28 22.442 28 21.75 V 8.25 C 28 7.5575 27.442 7 26.75 7 H 14 V 6.25 C 14 5.5575 13.443 5 12.75 5 H 4.25 C 3.5575 5 3 5.5575 3 6.25" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Rectangle Canvas.Left="3"
+                           Canvas.Top="10"
+                           Width="25"
+                           Height="16"
+                           Fill="#000000"
+                           Opacity="0.2"
+                           RadiusX="1.25"
+                           RadiusY="1.25" />
+                <Rectangle Canvas.Left="5"
+                           Canvas.Top="9"
+                           Width="21"
+                           Height="10"
+                           Fill="#FFE4E4E4"
+                           RadiusX="1.25"
+                           RadiusY="1.25" />
+                <Rectangle Canvas.Left="3"
+                           Canvas.Top="11"
+                           Width="25"
+                           Height="16"
+                           Fill="#FFE25252"
+                           RadiusX="1.25"
+                           RadiusY="1.25" />
+                <Path Fill="#FFFFFFFF" Opacity="0.1">
+                    <Path.Data>
+                        <PathGeometry Figures="M 4.25 5 C 3.5575 5 3 5.5575 3 6.25 L 3 7.25 C 3 6.5575 3.5575 6 4.25 6 L 12.75 6 C 13.443 6 14 6.5575 14 7.25 L 14 8 L 26.75 8 C 27.442 8 28 8.5575 28 9.25 L 28 8.25 C 28 7.5575 27.442 7 26.75 7 L 14 7 L 14 6.25 C 14 5.5575 13.443 5 12.75 5 L 4.25 5 z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Media" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="1200"
+                    Height="1200">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Canvas.RenderTransform>
+                <Canvas>
+                    <Path Fill="#FFF5DB39">
+                        <Path.Data>
+                            <PathGeometry Figures="M1006.311 1149.996H211.475C93.878 1149.996 50 1106.764 50 978.385V165.986   c0-51.274 44.557-115.983 123.645-115.983h832.551c94.184 0 143.797 64.709 143.797 143.797v823.45   C1150.771 1117.151 1086.98 1149.996 1006.311 1149.996z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Ellipse Canvas.Left="187.2"
+                             Canvas.Top="208.9"
+                             Width="852.2"
+                             Height="852.2"
+                             Fill="#FFD00F2E" />
+                    <Canvas>
+                        <Canvas>
+                            <Rectangle Canvas.Left="366.311"
+                                       Canvas.Top="815.374"
+                                       Width="167.842"
+                                       Height="69.863"
+                                       Fill="#FF2D3F52" />
+                            <Path Fill="#FF2D3F52">
+                                <Path.Data>
+                                    <PathGeometry Figures="M344.07 889.982c0 5.574 4.513 10.083 10.086 10.083h192.155c5.573 0 10.083-4.508 10.083-10.083l0 0     c0-5.567-4.51-10.083-10.083-10.083H354.156C348.584 879.9 344.07 884.415 344.07 889.982L344.07 889.982z" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                            <Canvas>
+                                <Path Fill="#FFFFFFFF">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M125.776 797.576c0 13.165 10.668 23.835 23.834 23.835h601.244c13.161 0 23.832-10.67 23.832-23.835      V396.757c0-13.17-10.671-23.839-23.832-23.839H149.611c-13.166 0-23.834 10.669-23.834 23.839V797.576z" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                                <Path Fill="#FFFFFFFF">
+                                    <Path.Data>
+                                        <PathGeometry Figures="M125.776 762.895V396.757c0-13.17 10.668-23.839 23.834-23.839h601.244      c13.161 0 23.832 10.669 23.832 23.839v366.138H125.776z" FillRule="NonZero" />
+                                    </Path.Data>
+                                </Path>
+                                <Canvas>
+                                    <Rectangle Canvas.Left="438.916"
+                                               Canvas.Top="780.366"
+                                               Width="24.876"
+                                               Height="21.773"
+                                               Fill="#FF48505E" />
+                                </Canvas>
+                                <Rectangle Canvas.Left="146.945"
+                                           Canvas.Top="395.542"
+                                           Width="606.577"
+                                           Height="344.389"
+                                           Fill="#FF2D3F52" />
+                            </Canvas>
+                        </Canvas>
+                        <Path Fill="#FF80C2CD">
+                            <Path.Data>
+                                <PathGeometry Figures="M423.614 519.982l76.121 43.949c10.892 6.288 10.892 22.009 0 28.297l-76.121 43.949    c-10.892 6.288-24.506-1.572-24.506-14.149v-87.897C399.108 521.554 412.722 513.694 423.614 519.982z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                    <Path Fill="#FF211915" Opacity="0.19">
+                        <Path.Data>
+                            <PathGeometry Figures="M750.854 372.918H450.731v527.147h95.581c5.573 0 10.083-4.508 10.083-10.083   c0-5.567-4.51-10.082-10.083-10.082h-12.158v-58.489h216.701c13.161 0 23.832-10.671 23.832-23.835v-400.82   C774.687 383.587 764.015 372.918 750.854 372.918z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Path Fill="#FF80C2CD">
+                        <Path.Data>
+                            <PathGeometry Figures="M895.646 267.345l-12.672-12.537l-178.64 57.284v151.752c-5.797-1.853-12.195-2.941-18.945-2.941   c-25.716 0-46.545 14.914-46.545 33.336c0 18.401 20.829 33.324 46.545 33.324c25.673 0 46.503-14.923 46.503-33.324   c0-2.004-0.332-3.96-0.808-5.855V363.285l125.181-40.167v94.616c-6.024-2.045-12.671-3.266-19.794-3.266   c-25.715 0-46.523 14.891-46.523 33.324c0 18.411 20.807 33.325 46.523 33.325c25.695 0 46.503-14.914 46.503-33.325   c0-2.257-0.31-4.472-0.931-6.6l0.931-0.309L895.646 267.345z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                    <Canvas>
+                        <Path Fill="#FF2D3F52">
+                            <Path.Data>
+                                <PathGeometry Figures="M1083.101 672.145v-42.894c0-7.42-6.014-13.437-13.429-13.437H685.001    c-7.415 0-13.433 6.018-13.433 13.437v42.894h9.665v219.586h-9.665v0.233c0 7.418 6.018 13.437 13.433 13.437h384.671    c7.415 0 13.429-6.018 13.429-13.437v-0.233h-9.414V672.145H1083.101z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                        <Path Fill="#FF2B3D4E">
+                            <Path.Data>
+                                <PathGeometry Figures="M1034.061 606.326c0 6.18-4.998 11.188-11.164 11.188h-60.979c-6.166 0-11.181-5.009-11.181-11.188l0 0    c0-6.183 5.015-11.18 11.181-11.18h60.979C1029.062 595.146 1034.061 600.143 1034.061 606.326L1034.061 606.326z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                        <Canvas>
+                            <Path Fill="#FFFFFFFF">
+                                <Path.Data>
+                                    <PathGeometry Figures="M671.568 880.005v11.959c0 7.418 6.018 13.437 13.433 13.437h384.671c7.415 0 13.429-6.018 13.429-13.437     v-11.959H671.568z" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                            <Path Fill="#FFFFFFFF">
+                                <Path.Data>
+                                    <PathGeometry Figures="M1083.101 680.849v-51.598c0-7.42-6.014-13.437-13.429-13.437H685.001     c-7.415 0-13.433 6.018-13.433 13.437v51.598H1083.101z" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                        </Canvas>
+                        <Canvas>
+                            <Path Fill="#FF80C2CD">
+                                <Path.Data>
+                                    <PathGeometry Figures="M946.933 753.495c0 60.32-48.906 109.223-109.234 109.223c-60.32 0-109.225-48.902-109.225-109.223     c0-60.33 48.906-109.235 109.225-109.235C898.028 644.26 946.933 693.166 946.933 753.495z" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                            <Path Fill="#FF2B3D4E">
+                                <Path.Data>
+                                    <PathGeometry Figures="M900.194 753.495c0 34.513-27.972 62.479-62.495 62.479c-34.504 0-62.479-27.965-62.479-62.479     c0-34.527 27.975-62.493 62.479-62.493C872.222 691.002 900.194 718.968 900.194 753.495z" FillRule="NonZero" />
+                                </Path.Data>
+                            </Path>
+                        </Canvas>
+                        <Path Fill="#FF80C2CD">
+                            <Path.Data>
+                                <PathGeometry Figures="M1055.661 661.307c0 7.424-6.022 13.435-13.427 13.435h-61.532c-7.436 0-13.439-6.011-13.439-13.435    v-15.797c0-7.421 6.003-13.435 13.439-13.435h61.532c7.405 0 13.427 6.015 13.427 13.435V661.307z" FillRule="NonZero" />
+                            </Path.Data>
+                        </Path>
+                    </Canvas>
+                    <Path Fill="#FF211915" Opacity="0.19">
+                        <Path.Data>
+                            <PathGeometry Figures="M1069.672 615.813h-40.919c3.175-1.973 5.308-5.468 5.308-9.487   c0-6.184-4.998-11.181-11.164-11.181h-60.979c-6.166 0-11.181 4.997-11.181 11.181c0 4.019 2.14 7.515 5.32 9.487H877.69v289.587   h191.982c7.415 0 13.429-6.018 13.429-13.437v-11.958h-9.414V680.85h9.414V629.25   C1083.101 621.831 1077.087 615.813 1069.672 615.813z" FillRule="NonZero" />
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+    <ControlTemplate x:Key="CryptedFile" TargetType="ContentControl">
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="32" Height="32">
+                <Canvas.Resources />
+                <Path Fill="#FFF46868">
+                    <Path.Data>
+                        <PathGeometry Figures="m26.758 6.8297-10.637-3.8087c-0.07813-0.028017-0.16338-0.028017-0.2415 0l-10.637 3.8087c-0.14515 0.051979-0.2423 0.19133-0.2423 0.34763 0 3.8544 1.0045 8.31 2.756 12.224 1.4207 3.1754 3.9755 7.4112 8.078 9.5568 0.05221 0.02728 0.10921 0.04092 0.16628 0.04092s0.11407-0.01364 0.16628-0.04092c4.1022-2.146 6.657-6.3817 8.078-9.5568 1.7514-3.9146 2.756-8.3705 2.756-12.224 0-0.15631-0.09715-0.29565-0.2423-0.34763z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Path Fill="#000000" Opacity=".2">
+                    <Path.Data>
+                        <PathGeometry Figures="m21.868 12.063-5.8019-2.0508c-0.04262-0.015085-0.08911-0.015085-0.13173 0l-5.8019 2.0508c-0.07917 0.02799-0.13216 0.10302-0.13216 0.18719 0 2.0754 0.54791 4.4746 1.5033 6.5823 0.77493 1.7098 2.1685 3.9906 4.4062 5.1459 0.02848 0.01469 0.05957 0.02203 0.0907 0.02203s0.06222-0.0073 0.0907-0.02203c2.2376-1.1555 3.6311-3.4363 4.4062-5.1459 0.95534-2.1078 1.5032-4.5071 1.5032-6.5823 0-0.08416-0.05299-0.1592-0.13216-0.18719z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Path Fill="#FFFFFFFF">
+                    <Path.Data>
+                        <PathGeometry Figures="m21.868 11.062-5.802-2.0507c-0.04262-0.015086-0.08911-0.015086-0.13173 0l-5.8019 2.0508c-0.07917 0.02799-0.13216 0.10302-0.13216 0.18719 0 2.0754 0.54791 4.4746 1.5033 6.5823 0.77493 1.7098 2.1685 3.9906 4.4062 5.1459 0.02848 0.01469 0.05957 0.02203 0.0907 0.02203s0.06222-0.0073 0.0907-0.02203c2.2376-1.1555 3.6311-3.4363 4.4062-5.1459 0.95534-2.1078 1.5032-4.5071 1.5032-6.5823 0-0.08416-0.05299-0.1592-0.13216-0.18719z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Path Fill="#FFFFFFFF" Opacity=".2">
+                    <Path.Data>
+                        <PathGeometry Figures="m15.879 3.0214-10.637 3.8086c-0.145 0.051999-0.242 0.1913-0.242 0.3476 0 0.2976 0.0174 0.60409 0.0293 0.90819 0.0311-0.1142 0.0991-0.2151 0.2129-0.2558l10.637-3.8086c0.078-0.028 0.164-0.028 0.242 0l10.637 3.8086c0.114 0.040699 0.182 0.1416 0.213 0.2558 0.012-0.3041 0.029-0.61059 0.029-0.90819 0-0.1563-0.097-0.2956-0.242-0.3476l-10.637-3.8086c-0.078-0.028-0.164-0.028-0.242 0z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+                <Path Fill="#000000" Opacity=".2">
+                    <Path.Data>
+                        <PathGeometry Figures="m5.0293 8.0862c-0.00857 0.031475-0.029297 0.058029-0.029297 0.0918 0 3.8544 1.0044 8.31 2.7559 12.224 1.4207 3.1754 3.9759 7.4105 8.078 9.5568 0.052 0.027 0.109 0.041 0.166 0.041 0.05707 0 0.11381-0.01374 0.16602-0.04102 4.1022-2.146 6.6574-6.3812 8.078-9.5568 1.7514-3.9146 2.7559-8.3705 2.7559-12.224 0-0.033768-0.02072-0.060322-0.0293-0.0918-0.142 3.636-1.111 7.704-2.727 11.317-1.4208 3.1754-3.976 7.4105-8.078 9.5568-0.05221 0.02728-0.10895 0.04102-0.16602 0.04102s-0.11381-0.01374-0.16602-0.04102c-4.102-2.147-6.6571-6.382-8.0781-9.557-1.6161-3.612-2.5846-7.681-2.7264-11.316z" FillRule="NonZero" />
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Viewbox>
+    </ControlTemplate>
+
+</ResourceDictionary>
