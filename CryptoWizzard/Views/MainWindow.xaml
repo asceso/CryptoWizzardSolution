@@ -72,6 +72,8 @@
                 </StackPanel>
             </Button>
             <Button Width="125"
+                    Command="{Binding EcnryptFileCommand}"
+                    CommandParameter="{Binding ElementName=ManagerGrid, Path=SelectedItem}"
                     IsEnabled="{Binding IsEncryptEnabled, UpdateSourceTrigger=PropertyChanged}"
                     Style="{DynamicResource SimpleButton}">
                 <StackPanel Orientation="Horizontal">
@@ -85,6 +87,8 @@
                 </StackPanel>
             </Button>
             <Button Width="125"
+                    Command="{Binding DecryptFileCommand}"
+                    CommandParameter="{Binding ElementName=ManagerGrid, Path=SelectedItem}"
                     IsEnabled="{Binding IsDecryptEnabled, UpdateSourceTrigger=PropertyChanged}"
                     Style="{DynamicResource SimpleButton}">
                 <StackPanel Orientation="Horizontal">

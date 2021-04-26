@@ -1,5 +1,4 @@
-﻿using CryptoWizzard.Models;
-using CryptoWizzard.Views;
+﻿using CryptoWizzard.Views;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Prism.Commands;
@@ -10,7 +9,6 @@ using Services.Models;
 using System;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptoWizzard.ViewModels
 {
@@ -40,9 +38,9 @@ namespace CryptoWizzard.ViewModels
             this.memory = memory;
             this.hashing = hashing;
             CloseCommand = new DelegateCommand(OnClose);
-            AcceptCommand = new DelegateCommand(OnAccept, CanAcceptOrSaving).ObservesProperty(()=>InputKey);
+            AcceptCommand = new DelegateCommand(OnAccept, CanAcceptOrSaving).ObservesProperty(() => InputKey);
             ResetCommand = new DelegateCommand(OnReset);
-            SaveKeyCommand = new DelegateCommand(OnSaveKey, ()=>IsKeyInstalled).ObservesProperty(() => IsKeyInstalled);
+            SaveKeyCommand = new DelegateCommand(OnSaveKey, () => IsKeyInstalled).ObservesProperty(() => IsKeyInstalled);
             LoadKeyCommand = new DelegateCommand(OnLoadKey);
             CheckKey();
         }
@@ -99,7 +97,7 @@ namespace CryptoWizzard.ViewModels
                 string json = JsonConvert.SerializeObject(key);
                 string encoded = hashing.EncodeBotCrypt(json);
 
-                using StreamWriter writer = new(sfd.FileName + ".cwk");
+                using StreamWriter writer = new(sfd.FileName);
                 writer.Write(encoded);
                 writer.Close();
             }

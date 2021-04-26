@@ -1,9 +1,11 @@
 ﻿using CryptoWizzard.Models;
 using CryptoWizzard.Views;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Services.HashingService;
 using Services.MemoryService;
+using Services.Models;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -45,6 +47,8 @@ namespace CryptoWizzard.ViewModels
         public DelegateCommand RefreshDirectoryCommand { get; set; }
         public DelegateCommand<object> DoubleClickGridItemCommand { get; set; }
         public DelegateCommand<object> SelectedChangedCommand { get; set; }
+        public DelegateCommand<object> EcnryptFileCommand { get; set; }
+        public DelegateCommand<object> DecryptFileCommand { get; set; }
 
         public MainWindowViewModel(IMemoryService memory, IHashingService hashing)
         {
@@ -58,6 +62,9 @@ namespace CryptoWizzard.ViewModels
             BackOnPathCommand = new DelegateCommand(OnBackwardPathNavigation);
             RefreshDirectoryCommand = new DelegateCommand(RefreshDirectory);
             DoubleClickGridItemCommand = new DelegateCommand<object>(OnGridDoubleCLick);
+            SelectedChangedCommand = new DelegateCommand<object>(OnSelectedChanged);
+            EcnryptFileCommand = new DelegateCommand<object>(OnEncryptFile);
+            DecryptFileCommand = new DelegateCommand<object>(OnDecryptFile);
             SelectedChangedCommand = new DelegateCommand<object>(OnSelectedChanged);
             IsEncryptEnabled = false;
             IsDecryptEnabled = false;
@@ -118,6 +125,48 @@ namespace CryptoWizzard.ViewModels
             if (dir.Root != null)
             {
                 ReadDrives();
+            }
+        }
+        private async void OnEncryptFile(object grid_item)
+        {
+            if (grid_item is FileManagerItem fmi)
+            {
+                string decoded_key = await memory.GetItem<string>("EncryptKey");
+                if (decoded_key == null)
+                {
+                    ErrorWindow error = new("Ключ шифрования не установлен");
+                    error.ShowDialog();
+                    return;
+                }
+                string json = hashing.DecodeBotCrypt(decoded_key);
+                CryptoKeyModel key = JsonConvert.DeserializeObject<CryptoKeyModel>(json);
+                hashing.EncodeBlowFish(key, fmi.Path);
+                File.Delete(fmi.Path);
+                RefreshDirectory();
+            }
+        }
+        private async void OnDecryptFile(object grid_item)
+        {
+            if (grid_item is FileManagerItem fmi)
+            {
+                string decoded_key = await memory.GetItem<string>("EncryptKey");
+                if (decoded_key == null)
+                {
+                    ErrorWindow error = new("Ключ шифрования не установлен");
+                    error.ShowDialog();
+                    return;
+                }
+                string json = hashing.DecodeBotCrypt(decoded_key);
+                CryptoKeyModel key = JsonConvert.DeserializeObject<CryptoKeyModel>(json);
+                var result = hashing.DecodeBlowFish(key, fmi.Path);
+                if (result == false)
+                {
+                    ErrorWindow error = new("Ключ шифрования не подходит");
+                    error.ShowDialog();
+                    return;
+                }
+                File.Delete(fmi.Path);
+                RefreshDirectory();
             }
         }
 
