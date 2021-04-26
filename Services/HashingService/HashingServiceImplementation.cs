@@ -32,7 +32,7 @@ namespace Services.HashingService
 
             byte[] bytes = blow.EncryptCBC(key_with_file_buffer.ToArray());
 
-            using FileStream efs = new(file_path.Replace(fi.Extension,".cwf"), FileMode.Create);
+            using FileStream efs = new(file_path.Replace(fi.Extension, ".cwf"), FileMode.Create);
             efs.Write(bytes, 0, bytes.Length);
             efs.Close();
         }
@@ -72,7 +72,7 @@ namespace Services.HashingService
                 {
                     file_bytes.Add(bytes[i]);
                 }
-                using FileStream efs = new(file_path.Replace(".cwf",old_extension), FileMode.Create);
+                using FileStream efs = new(file_path.Replace(".cwf", old_extension), FileMode.Create);
                 efs.Write(file_bytes.ToArray(), 0, file_bytes.Count);
                 efs.Close();
             }
