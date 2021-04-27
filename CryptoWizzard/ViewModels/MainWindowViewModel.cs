@@ -197,7 +197,17 @@ namespace CryptoWizzard.ViewModels
                 string tempFileName = Environment.CurrentDirectory + $"\\temp\\tmp{tempCounter}.{output_filename.Remove(0, output_filename.LastIndexOf('.') + 1)}";
                 File.Move(output_filename, tempFileName);
                 tempCounter++;
-                Process.Start($"\"{tempFileName}\"");
+                
+                FileInfo tfi = new(tempFileName);
+                using StreamWriter writer = new(Environment.CurrentDirectory + $"\\temp\\run.cmd");
+                writer.Write($"{tfi.FullName}");
+                writer.Close();
+
+                ProcessStartInfo processStart = new();
+                processStart.FileName = Environment.CurrentDirectory + $"\\temp\\run.cmd";
+                processStart.CreateNoWindow = true;
+                processStart.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(processStart);
             }
         }
 
