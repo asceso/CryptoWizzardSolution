@@ -197,7 +197,7 @@ namespace CryptoWizzard.ViewModels
                 string tempFileName = Environment.CurrentDirectory + $"\\temp\\tmp{tempCounter}.{output_filename.Remove(0, output_filename.LastIndexOf('.') + 1)}";
                 File.Move(output_filename, tempFileName);
                 tempCounter++;
-                Process.Start(tempFileName);
+                Process.Start($"\"{tempFileName}\"");
             }
         }
 

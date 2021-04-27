@@ -20,14 +20,14 @@ namespace CryptoWizzard.Views
             Height = SystemParameters.FullPrimaryScreenHeight + 10;
             DataContext = new MainWindowViewModel(memory, hashing);
             Loaded += MainWindowLoaded;
-            Closing += MainWindowClosing;
+            Closed += MainWindowClosed;
         }
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
             DirectoryInfo temp = new(Environment.CurrentDirectory + "\\temp");
             temp.Create();
         }
-        private void MainWindowClosing(object sender, CancelEventArgs e)
+        private void MainWindowClosed(object sender, EventArgs e)
         {
             DirectoryInfo temp = new(Environment.CurrentDirectory + "\\temp");
             temp.Delete(true);
