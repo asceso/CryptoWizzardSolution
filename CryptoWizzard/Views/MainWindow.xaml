@@ -101,6 +101,21 @@
                                Text="Дешифровать" />
                 </StackPanel>
             </Button>
+            <Button Width="150"
+                    Command="{Binding OpenEncryptedCommand}"
+                    CommandParameter="{Binding ElementName=ManagerGrid, Path=SelectedItem}"
+                    IsEnabled="{Binding IsDecryptEnabled, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource SimpleButton}">
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl Height="20"
+                                    Foreground="{DynamicResource PrimaryFontBrush}"
+                                    Template="{DynamicResource SecureOpen}" />
+                    <TextBlock Margin="10,0,0,0"
+                               HorizontalAlignment="Center"
+                               Style="{DynamicResource SimpleTextBlock}"
+                               Text="Открыть с ключом" />
+                </StackPanel>
+            </Button>
         </StackPanel>
         <Border Grid.Row="4"
                 Grid.Column="1"

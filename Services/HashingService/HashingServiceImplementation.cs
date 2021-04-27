@@ -21,7 +21,7 @@ namespace Services.HashingService
             using FileStream fs = new(file_path, FileMode.Open);
 
             FileInfo fi = new(file_path);
-            byte[] key_buffer = Encoding.UTF8.GetBytes($"KEY==='{key.PublicName}',EXT==='{fi.Extension}'");
+            byte[] key_buffer = Encoding.UTF8.GetBytes($"KEY==='{key.PublicName}',EXTL==='{fi.Extension.Length-1}',EXT==='{fi.Extension}'");
             byte[] file_buffer = new byte[(int)fs.Length];
             fs.Read(file_buffer, 0, (int)fs.Length);
             fs.Close();
@@ -47,34 +47,106 @@ namespace Services.HashingService
             fs.Close();
 
             byte[] bytes = blow.DecryptCBC(buffer);
+
             List<byte> key_bytes = new();
             for (int i = 0; i < key.ByteLength + 8; i++)
             {
                 key_bytes.Add(bytes[i]);
             }
             string crypted_key = Encoding.UTF8.GetString(key_bytes.ToArray());
+
             if ($"KEY==='{key.PublicName}'" != crypted_key)
             {
                 return false;
             }
             else
             {
+                int key_ext_offset = key_bytes.Count + 1;
+                List<byte> ext_l_bytes = new();
+                for (int i = key_ext_offset; i < key_ext_offset + 10; i++)
+                {
+                    ext_l_bytes.Add(bytes[i]);
+                }
+                string encrypted_ext_l = Encoding.UTF8.GetString(ext_l_bytes.ToArray());
+                int old_extension_length = int.Parse(encrypted_ext_l.Replace("EXTL==='", string.Empty).Replace("'", string.Empty));
+
+                key_ext_offset += ext_l_bytes.Count + 1;
                 List<byte> ext_bytes = new();
-                for (int i = key_bytes.Count; i < key_bytes.Count + 13; i++)
+                for (int i = key_ext_offset; i < key_ext_offset + 9 + old_extension_length; i++)
                 {
                     ext_bytes.Add(bytes[i]);
                 }
                 string crypted_ext = Encoding.UTF8.GetString(ext_bytes.ToArray());
-                string old_extension = crypted_ext.Replace(",EXT==='", string.Empty);
-                old_extension = old_extension.Replace("'", string.Empty);
+                string old_extension = crypted_ext.Replace("EXT==='", string.Empty).Replace("'", string.Empty);
+
+                key_ext_offset += ext_bytes.Count;
+
                 List<byte> file_bytes = new();
-                for (int i = crypted_key.Length + crypted_ext.Length; i < bytes.Length - crypted_key.Length; i++)
+                for (int i = key_ext_offset; i < bytes.Length; i++)
                 {
                     file_bytes.Add(bytes[i]);
                 }
                 using FileStream efs = new(file_path.Replace(".cwf", old_extension), FileMode.Create);
                 efs.Write(file_bytes.ToArray(), 0, file_bytes.Count);
                 efs.Close();
+            }
+            return true;
+        }
+        public bool DecodeBlowFish(CryptoKeyModel key, string file_path, out string output_filename)
+        {
+            BlowFish blow = new(blow_password);
+            blow.IV = new byte[] { 33, 11, 233, 156, 155, 230, 79, 129 };
+
+            using FileStream fs = new(file_path, FileMode.Open);
+            byte[] buffer = new byte[(int)fs.Length];
+            fs.Read(buffer, 0, (int)fs.Length);
+            fs.Close();
+
+            byte[] bytes = blow.DecryptCBC(buffer);
+
+            List<byte> key_bytes = new();
+            for (int i = 0; i < key.ByteLength + 8; i++)
+            {
+                key_bytes.Add(bytes[i]);
+            }
+            string crypted_key = Encoding.UTF8.GetString(key_bytes.ToArray());
+
+            if ($"KEY==='{key.PublicName}'" != crypted_key)
+            {
+                output_filename = string.Empty;
+                return false;
+            }
+            else
+            {
+                int key_ext_offset = key_bytes.Count + 1;
+                List<byte> ext_l_bytes = new();
+                for (int i = key_ext_offset; i < key_ext_offset + 10; i++)
+                {
+                    ext_l_bytes.Add(bytes[i]);
+                }
+                string encrypted_ext_l = Encoding.UTF8.GetString(ext_l_bytes.ToArray());
+                int old_extension_length = int.Parse(encrypted_ext_l.Replace("EXTL==='", string.Empty).Replace("'", string.Empty));
+
+                key_ext_offset += ext_l_bytes.Count + 1;
+                List<byte> ext_bytes = new();
+                for (int i = key_ext_offset; i < key_ext_offset + 9 + old_extension_length; i++)
+                {
+                    ext_bytes.Add(bytes[i]);
+                }
+                string crypted_ext = Encoding.UTF8.GetString(ext_bytes.ToArray());
+                string old_extension = crypted_ext.Replace("EXT==='", string.Empty).Replace("'", string.Empty);
+
+                key_ext_offset += ext_bytes.Count;
+
+                List<byte> file_bytes = new();
+                for (int i = key_ext_offset; i < bytes.Length; i++)
+                {
+                    file_bytes.Add(bytes[i]);
+                }
+                using FileStream efs = new(file_path.Replace(".cwf", old_extension), FileMode.Create);
+                efs.Write(file_bytes.ToArray(), 0, file_bytes.Count);
+                efs.Close();
+                output_filename = file_path.Replace(".cwf", old_extension);
             }
             return true;
         }

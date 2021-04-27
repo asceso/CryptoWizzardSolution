@@ -1,6 +1,9 @@
 ﻿using CryptoWizzard.ViewModels;
 using Services.HashingService;
 using Services.MemoryService;
+using System;
+using System.ComponentModel;
+using System.IO;
 using System.Windows;
 
 namespace CryptoWizzard.Views
@@ -16,6 +19,18 @@ namespace CryptoWizzard.Views
             Width = SystemParameters.FullPrimaryScreenWidth - 10;
             Height = SystemParameters.FullPrimaryScreenHeight + 10;
             DataContext = new MainWindowViewModel(memory, hashing);
+            Loaded += MainWindowLoaded;
+            Closing += MainWindowClosing;
+        }
+        private void MainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo temp = new(Environment.CurrentDirectory + "\\temp");
+            temp.Create();
+        }
+        private void MainWindowClosing(object sender, CancelEventArgs e)
+        {
+            DirectoryInfo temp = new(Environment.CurrentDirectory + "\\temp");
+            temp.Delete(true);
         }
     }
 }

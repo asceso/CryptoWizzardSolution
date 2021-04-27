@@ -6,7 +6,9 @@ using Prism.Mvvm;
 using Services.HashingService;
 using Services.MemoryService;
 using Services.Models;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -22,6 +24,7 @@ namespace CryptoWizzard.ViewModels
                 ".WAV", ".MID", ".MIDI", ".WMA", ".MP3", ".OGG", ".RMA",
                 ".AVI", ".MP4", ".DIVX", ".WMV",
             };
+        private int tempCounter = 1;
 
         private bool _isBackEnabled;
         private bool _isEncryptEnabled;
@@ -49,6 +52,7 @@ namespace CryptoWizzard.ViewModels
         public DelegateCommand<object> SelectedChangedCommand { get; set; }
         public DelegateCommand<object> EcnryptFileCommand { get; set; }
         public DelegateCommand<object> DecryptFileCommand { get; set; }
+        public DelegateCommand<object> OpenEncryptedCommand { get; set; }
 
         public MainWindowViewModel(IMemoryService memory, IHashingService hashing)
         {
@@ -65,6 +69,7 @@ namespace CryptoWizzard.ViewModels
             SelectedChangedCommand = new DelegateCommand<object>(OnSelectedChanged);
             EcnryptFileCommand = new DelegateCommand<object>(OnEncryptFile);
             DecryptFileCommand = new DelegateCommand<object>(OnDecryptFile);
+            OpenEncryptedCommand = new DelegateCommand<object>(OnOpenEncrypted);
             SelectedChangedCommand = new DelegateCommand<object>(OnSelectedChanged);
             IsEncryptEnabled = false;
             IsDecryptEnabled = false;
@@ -167,6 +172,32 @@ namespace CryptoWizzard.ViewModels
                 }
                 File.Delete(fmi.Path);
                 RefreshDirectory();
+            }
+        }
+        private async void OnOpenEncrypted(object grid_item)
+        {
+            if (grid_item is FileManagerItem fmi)
+            {
+                string decoded_key = await memory.GetItem<string>("EncryptKey");
+                if (decoded_key == null)
+                {
+                    ErrorWindow error = new("Ключ шифрования не установлен");
+                    error.ShowDialog();
+                    return;
+                }
+                string json = hashing.DecodeBotCrypt(decoded_key);
+                CryptoKeyModel key = JsonConvert.DeserializeObject<CryptoKeyModel>(json);
+                var result = hashing.DecodeBlowFish(key, fmi.Path, out string output_filename);
+                if (result == false)
+                {
+                    ErrorWindow error = new("Ключ шифрования не подходит");
+                    error.ShowDialog();
+                    return;
+                }
+                string tempFileName = Environment.CurrentDirectory + $"\\temp\\tmp{tempCounter}.{output_filename.Remove(0, output_filename.LastIndexOf('.') + 1)}";
+                File.Move(output_filename, tempFileName);
+                tempCounter++;
+                Process.Start(tempFileName);
             }
         }
 

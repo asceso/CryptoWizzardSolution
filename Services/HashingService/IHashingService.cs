@@ -19,5 +19,6 @@ namespace Services.HashingService
 
         void EncodeBlowFish(CryptoKeyModel key, string file_path);
         bool DecodeBlowFish(CryptoKeyModel key, string file_path);
+        bool DecodeBlowFish(CryptoKeyModel key, string file_path, out string output_filename);
     }
 }
