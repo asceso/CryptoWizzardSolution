@@ -2,7 +2,6 @@
 using Services.HashingService;
 using Services.MemoryService;
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Windows;
 

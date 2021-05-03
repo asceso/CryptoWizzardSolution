@@ -5,6 +5,13 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
+    <Style x:Key="SimpleHeaderTextBlock"
+           BasedOn="{StaticResource SimpleTextBlock}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
     <Style x:Key="SimpleLabel" TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryFontBrush}" />
         <Setter Property="FontSize" Value="13" />

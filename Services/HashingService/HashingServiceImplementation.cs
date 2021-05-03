@@ -21,7 +21,7 @@ namespace Services.HashingService
             using FileStream fs = new(file_path, FileMode.Open);
 
             FileInfo fi = new(file_path);
-            byte[] key_buffer = Encoding.UTF8.GetBytes($"KEY==='{key.PublicName}',EXTL==='{fi.Extension.Length-1}',EXT==='{fi.Extension}'");
+            byte[] key_buffer = Encoding.UTF8.GetBytes($"KEY==='{key.PublicName}',EXTL==='{fi.Extension.Length - 1}',EXT==='{fi.Extension}'");
             byte[] file_buffer = new byte[(int)fs.Length];
             fs.Read(file_buffer, 0, (int)fs.Length);
             fs.Close();

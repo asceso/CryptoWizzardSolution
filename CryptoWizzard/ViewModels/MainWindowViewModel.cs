@@ -7,6 +7,7 @@ using Services.HashingService;
 using Services.MemoryService;
 using Services.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -53,6 +54,7 @@ namespace CryptoWizzard.ViewModels
         public DelegateCommand<object> EcnryptFileCommand { get; set; }
         public DelegateCommand<object> DecryptFileCommand { get; set; }
         public DelegateCommand<object> OpenEncryptedCommand { get; set; }
+        public DelegateCommand HelpCommand { get; set; }
 
         public MainWindowViewModel(IMemoryService memory, IHashingService hashing)
         {
@@ -70,6 +72,7 @@ namespace CryptoWizzard.ViewModels
             EcnryptFileCommand = new DelegateCommand<object>(OnEncryptFile);
             DecryptFileCommand = new DelegateCommand<object>(OnDecryptFile);
             OpenEncryptedCommand = new DelegateCommand<object>(OnOpenEncrypted);
+            HelpCommand = new DelegateCommand(OnHelpPressed);
             SelectedChangedCommand = new DelegateCommand<object>(OnSelectedChanged);
             IsEncryptEnabled = false;
             IsDecryptEnabled = false;
@@ -197,7 +200,7 @@ namespace CryptoWizzard.ViewModels
                 string tempFileName = Environment.CurrentDirectory + $"\\temp\\tmp{tempCounter}.{output_filename.Remove(0, output_filename.LastIndexOf('.') + 1)}";
                 File.Move(output_filename, tempFileName);
                 tempCounter++;
-                
+
                 FileInfo tfi = new(tempFileName);
                 using StreamWriter writer = new(Environment.CurrentDirectory + $"\\temp\\run.cmd");
                 writer.Write($"{tfi.FullName}");
@@ -209,6 +212,37 @@ namespace CryptoWizzard.ViewModels
                 processStart.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(processStart);
             }
+        }
+        private async void OnHelpPressed()
+        {
+            string help_path = Environment.CurrentDirectory + "\\Help.json";
+
+            if (!File.Exists(help_path))
+            {
+                using StreamWriter writer = new(help_path);
+                List<HelpItem> empty_help = new();
+
+                string wrapBlaBlaText = "Бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла";
+                string helpLongBody = string.Empty;
+                for (int i = 0; i < 5; i++)
+                    helpLongBody += wrapBlaBlaText + Environment.NewLine;
+
+                empty_help.Add(new HelpItem("Глава 1", helpLongBody));
+                empty_help.Add(new HelpItem("Глава 2", helpLongBody));
+                empty_help.Add(new HelpItem("Глава 3", helpLongBody));
+                empty_help.Add(new HelpItem("Глава 4", helpLongBody));
+                empty_help.Add(new HelpItem("Глава 5", helpLongBody));
+
+                await writer.WriteAsync(JsonConvert.SerializeObject(empty_help, Formatting.Indented));
+                writer.Close();
+            }
+
+            using StreamReader reader = new(Environment.CurrentDirectory + "\\Help.json");
+            List<HelpItem> helps = JsonConvert.DeserializeObject<List<HelpItem>>(await reader.ReadToEndAsync());
+            reader.Close();
+
+            HelpWindow hw = new(helps);
+            hw.ShowDialog();
         }
 
         private string GetByteString(long value)
